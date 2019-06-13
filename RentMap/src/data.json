@@ -10,13 +10,15 @@
                 "img":"",
                 "amount":"50000",
                 "type":0,
-                "area":6                
+                "area":6,                
+                "floor":1                
             },
             {
                 "img":"",
                 "amount":"65000",
                 "type":0,
-                "area":10                  
+                "area":10,
+                "floor":1                     
             }
         ]	    
     },
@@ -31,7 +33,8 @@
                 "img":"",
                 "amount":"100000",
                 "area":5,
-                "type":1                
+                "type":1,
+                "floor":1                   
             }
         ]
     }

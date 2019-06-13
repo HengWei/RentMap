@@ -1,6 +1,11 @@
 <template>  
   <div id="app" class="h-100" >
-    <GmapMap
+    <div class="container">
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">RENT MAP</a>
+  </nav>
+</div>
+    <!-- <GmapMap
   :center="{lat: 25.137937, lng: 121.546514}"
   :zoom="15"
   icon  
@@ -16,8 +21,9 @@
     :icon="icon"  
     @click="callInfo(m.id)"
   />
-</GmapMap>
+</GmapMap> -->
 <!-- Modal -->
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -72,7 +78,8 @@ export default {
                 "img":"",
                 "amount":"",
                 "type":0,
-                "area":0                
+                "area":0,
+                "floor":0                
             }
         ]	    
     }
@@ -94,6 +101,15 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;  
   color: #2c3e50;  
+}
+
+
+.container {    
+    padding-right: 0 !important; 
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
 }
 
 </style>
