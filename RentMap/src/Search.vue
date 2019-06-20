@@ -4,15 +4,15 @@
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
           <div class="row">
-            <div class="col-sm-12 col-md-8 py-8">
+            <div class="col-sm-6 col-md-6 py-6">
               <h4 class="text-white">搜尋</h4>
               <!-- <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p> -->
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">房型</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                  <option selected>不限</option>
+                <select v-model="rentType" class="custom-select" id="inputGroupSelect01">
+                  <option value="0">不限</option>
                   <option value="1">套房</option>
                   <option value="2">雅房</option>                  
                 </select>
@@ -21,29 +21,23 @@
                 <div class="input-group-prepend">
                   <label class="input-group-text" for="inputGroupSelect01">性別</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                  <option selected>不限</option>
+                <select v-model="sex" class="custom-select" id="inputGroupSelect01">
+                  <option value="0">不限</option>
                   <option value="1">男生</option>
                   <option value="2">女生</option>                  
                 </select>
-              </div>      
-              <div class="input-group mb-3">
-                <label for="customRange1" class="text-white">距離學校</label>
-                <input type="range" class="custom-range" id="customRange1">
-              </div>
-              <div class="input-group mb-3">
-                <label for="customRange1" class="text-white">每月租金上限</label>
-                <input type="range" class="custom-range" min="0" max="100000" step="" id="customRange1">
               </div>
             </div>
             
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">Contact</h4>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
-              </ul>
+            <div class="col-sm-6 col-md-6 py-6">
+                <div class="input-group mb-3">
+                <label for="distinct" class="text-white">距離學校 {{distinct}} KM </label>
+                <input type="range" v-model="distinct" class="custom-range"  id="distinct" min="0" max="15" step="1">
+              </div>
+              <div class="input-group mb-3">
+                <label for="customRange1" class="text-white">每月租金上限 {{amount}} NTD/月 </label>
+                <input type="range" v-model="amount" class="custom-range" min="0" max="50000" step="500" id="customRange1">
+              </div>
             </div>
           </div>
         </div>
@@ -80,7 +74,7 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/src/image/C_1.jpg"> 
-
+            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
             <div class="card-body">
               <p class="card-text">
                 地址: 士林區菁山路110巷17號<br>
@@ -120,6 +114,10 @@
         user-select: none;
       }
 
+      .py-6{        
+        padding-top: 1.5rem!important;
+      }
+
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
@@ -135,24 +133,11 @@ export default {
   name: 'app',
   data () {
     return {      
-      icon: { url: 'house.png' },
-      data: json,
-      info: {
-        "id":0,
-        "position":{"lat":0, "lng":0},        
-        "address":"",
-        "owner":"",
-        "phone":"",        
-        "detail":[
-            {
-                "img":"",
-                "amount":"",
-                "type":0,
-                "area":0,
-                "floor":0                
-            }
-        ]	    
-    }
+      distinct: 0,
+      amount : 0,
+      rentType : 1,
+      sex: 0    
+      
     }
   },
   methods:{
@@ -160,6 +145,8 @@ export default {
       this.info = this.data.find(d=> d.id ===id);
       $('#exampleModal').modal('show');
     }
+
+    
   }
 }
 </script>
