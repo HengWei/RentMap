@@ -1,5 +1,5 @@
 import Vue from 'vue'
-// import App from './App.vue'
+import Detail from './Detail.vue'
 import App from './Search.vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 
@@ -11,6 +11,8 @@ Vue.use(VueGoogleMaps, {
 
 new Vue({
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  el: '#detail',
+  render: h => h(Detail)
 })
 
